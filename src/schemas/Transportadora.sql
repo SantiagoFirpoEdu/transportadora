@@ -1,231 +1,289 @@
-CREATE TABLE Caminhao (
- placa INT NOT NULL,
- marca VARCHAR(64) NOT NULL,
- modelo VARCHAR(64) NOT NULL,
- ano_fabricacao INT NOT NULL
+CREATE TABLE caminhao
+(
+    placa          INT         NOT NULL,
+    marca          VARCHAR(64) NOT NULL,
+    modelo         VARCHAR(64) NOT NULL,
+    ano_fabricacao INT         NOT NULL
 );
 
-ALTER TABLE Caminhao ADD CONSTRAINT PK_Caminhao PRIMARY KEY (placa);
+ALTER TABLE caminhao
+    ADD CONSTRAINT pk_caminhao PRIMARY KEY (placa);
 
 
-CREATE TABLE CategoriaItem (
- id_categoria NUMERIC(10) NOT NULL,
- descricao VARCHAR(256)
+CREATE TABLE categoriaitem
+(
+    id_categoria NUMERIC(10) NOT NULL,
+    descricao    VARCHAR(256)
 );
 
-ALTER TABLE CategoriaItem ADD CONSTRAINT PK_CategoriaItem PRIMARY KEY (id_categoria);
+ALTER TABLE categoriaitem
+    ADD CONSTRAINT pk_categoriaitem PRIMARY KEY (id_categoria);
 
 
-CREATE TABLE Cidade (
- id_cidade NUMERIC(10) NOT NULL,
- nome INT,
- unidade_federativa NCHAR(2)
+CREATE TABLE cidade
+(
+    id_cidade          NUMERIC(10) NOT NULL,
+    nome               INT,
+    unidade_federativa NCHAR(2)
 );
 
-ALTER TABLE Cidade ADD CONSTRAINT PK_Cidade PRIMARY KEY (id_cidade);
+ALTER TABLE cidade
+    ADD CONSTRAINT pk_cidade PRIMARY KEY (id_cidade);
 
 
-CREATE TABLE Cliente (
- id_cliente NUMERIC(10) NOT NULL,
- nome INT,
- endereco INT,
- telefones INT
+CREATE TABLE cliente
+(
+    id_cliente NUMERIC(10) NOT NULL,
+    nome       INT,
+    endereco   INT,
+    telefones  INT
 );
 
-ALTER TABLE Cliente ADD CONSTRAINT PK_Cliente PRIMARY KEY (id_cliente);
+ALTER TABLE cliente
+    ADD CONSTRAINT pk_cliente PRIMARY KEY (id_cliente);
 
 
-CREATE TABLE Distancia (
- id_cidade_partida NUMERIC(10) NOT NULL,
- id_cidade_chegada NUMERIC(10) NOT NULL,
- distancia INT
+CREATE TABLE distancia
+(
+    id_cidade_partida NUMERIC(10) NOT NULL,
+    id_cidade_chegada NUMERIC(10) NOT NULL,
+    distancia         INT
 );
 
-ALTER TABLE Distancia ADD CONSTRAINT PK_Distancia PRIMARY KEY (id_cidade_partida,id_cidade_chegada);
+ALTER TABLE distancia
+    ADD CONSTRAINT pk_distancia PRIMARY KEY (id_cidade_partida, id_cidade_chegada);
 
 
-CREATE TABLE Endereco (
- cep NUMERIC(8) NOT NULL,
- rua VARCHAR(64) NOT NULL,
- numero NUMERIC(5) NOT NULL,
- complemento NUMERIC(3),
- bairro VARCHAR(64),
- cidade VARCHAR(64) NOT NULL,
- estado NCHAR(2) NOT NULL
-);
-
-
-CREATE TABLE Entrega (
- id_entrega NUMERIC(10) NOT NULL,
- valor INT,
- data_chegada DATE,
- data_partida DATE,
- id_cidade_partida NUMERIC(10),
- placa VARCHAR(7),
- id_cidade_chegada NUMERIC(10),
- id_cliente NUMERIC(10) NOT NULL
-);
-
-ALTER TABLE Entrega ADD CONSTRAINT PK_Entrega PRIMARY KEY (id_entrega);
-
-
-CREATE TABLE Item (
- idItem NUMERIC(10) NOT NULL,
- descricao VARCHAR(64) NOT NULL,
- peso INT NOT NULL,
- largura INT NOT NULL,
- comprimento INT NOT NULL,
- altura INT NOT NULL
-);
-
-ALTER TABLE Item ADD CONSTRAINT PK_Item PRIMARY KEY (idItem);
-
-
-CREATE TABLE Licitacao (
- indice_licitacao NUMERIC(10) NOT NULL,
- id_item NUMERIC(10) NOT NULL,
- orgao_fiscalizador VARCHAR(64),
- data_licitacao DATE NOT NULL
-);
-
-ALTER TABLE Licitacao ADD CONSTRAINT PK_Licitacao PRIMARY KEY (indice_licitacao,id_item);
-
-
-CREATE TABLE Motorista (
- cnh NUMERIC(11) NOT NULL,
- data_contratacao DATE NOT NULL,
- nome VARCHAR(64) NOT NULL,
- salario DECIMAL(6) NOT NULL
-);
-
-ALTER TABLE Motorista ADD CONSTRAINT PK_Motorista PRIMARY KEY (cnh);
-
-
-CREATE TABLE PessoaFisica (
- id_cliente NUMERIC(10) NOT NULL,
- cpf NUMERIC(11),
- rg NUMERIC(10)
-);
-
-ALTER TABLE PessoaFisica ADD CONSTRAINT PK_PessoaFisica PRIMARY KEY (id_cliente);
-
-
-CREATE TABLE PessoaJuridica (
- id_cliente NUMERIC(10) NOT NULL,
- cnpj NUMERIC(10),
- inscricao_estadual NUMERIC(10)
-);
-
-ALTER TABLE PessoaJuridica ADD CONSTRAINT PK_PessoaJuridica PRIMARY KEY (id_cliente);
-
-
-CREATE TABLE Protocolo_Seguranca (
- id_protocolo_seguranca NUMERIC(10) NOT NULL,
- descricao VARCHAR(256)
-);
-
-ALTER TABLE Protocolo_Seguranca ADD CONSTRAINT PK_Protocolo_Seguranca PRIMARY KEY (id_protocolo_seguranca);
-
-
-CREATE TABLE Remessa (
- id_item NUMERIC(10) NOT NULL,
- id_entrega NUMERIC(10) NOT NULL,
- valor_declarado DECIMAL(10)
-);
-
-ALTER TABLE Remessa ADD CONSTRAINT PK_Remessa PRIMARY KEY (id_item,id_entrega);
-
-
-CREATE TABLE Seguradora (
- numero_seguradora NUMERIC(10) NOT NULL,
- nome VARCHAR(64) NOT NULL
-);
-
-ALTER TABLE Seguradora ADD CONSTRAINT PK_Seguradora PRIMARY KEY (numero_seguradora);
-
-
-CREATE TABLE Telefone (
- ddd NCHAR(2) NOT NULL,
- numero NUMERIC(9),
- id_cliente NUMERIC(10) NOT NULL
+CREATE TABLE endereco
+(
+    cep         NUMERIC(8)  NOT NULL,
+    rua         VARCHAR(64) NOT NULL,
+    numero      NUMERIC(5)  NOT NULL,
+    complemento NUMERIC(3),
+    bairro      VARCHAR(64),
+    cidade      VARCHAR(64) NOT NULL,
+    estado      NCHAR(2)    NOT NULL
 );
 
 
-CREATE TABLE Apolice (
- id_apolice NUMERIC(10) NOT NULL,
- numero_seguradora NUMERIC(10) NOT NULL,
- id_cliente NUMERIC(10) NOT NULL,
- valor_premio DECIMAL(3),
- valor_franquia DECIMAL(3)
+CREATE TABLE entrega
+(
+    id_entrega        NUMERIC(10) NOT NULL,
+    valor             INT,
+    data_chegada      DATE,
+    data_partida      DATE,
+    id_cidade_partida NUMERIC(10),
+    placa             VARCHAR(7),
+    id_cidade_chegada NUMERIC(10),
+    id_cliente        NUMERIC(10) NOT NULL
 );
 
-ALTER TABLE Apolice ADD CONSTRAINT PK_Apolice PRIMARY KEY (id_apolice,numero_seguradora,id_cliente);
+ALTER TABLE entrega
+    ADD CONSTRAINT pk_entrega PRIMARY KEY (id_entrega);
 
 
-CREATE TABLE Categorizacao (
- idItem NUMERIC(10) NOT NULL,
- id_categoria NUMERIC(10) NOT NULL
+CREATE TABLE item
+(
+    iditem      NUMERIC(10) NOT NULL,
+    descricao   VARCHAR(64) NOT NULL,
+    peso        INT         NOT NULL,
+    largura     INT         NOT NULL,
+    comprimento INT         NOT NULL,
+    altura      INT         NOT NULL
 );
 
-ALTER TABLE Categorizacao ADD CONSTRAINT PK_Categorizacao PRIMARY KEY (idItem,id_categoria);
+ALTER TABLE item
+    ADD CONSTRAINT pk_item PRIMARY KEY (iditem);
 
 
-CREATE TABLE Conducao (
- id_entrega NUMERIC(10) NOT NULL,
- cnh NUMERIC(11) NOT NULL
+CREATE TABLE licitacao
+(
+    indice_licitacao   NUMERIC(10) NOT NULL,
+    id_item            NUMERIC(10) NOT NULL,
+    orgao_fiscalizador VARCHAR(64),
+    data_licitacao     DATE        NOT NULL
 );
 
-ALTER TABLE Conducao ADD CONSTRAINT PK_Conducao PRIMARY KEY (id_entrega,cnh);
+ALTER TABLE licitacao
+    ADD CONSTRAINT pk_licitacao PRIMARY KEY (indice_licitacao, id_item);
 
 
-CREATE TABLE Inspecoes (
- id_protocolo_seguranca NUMERIC(10) NOT NULL,
- id_item NUMERIC(10) NOT NULL,
- data_ultima_inspecao DATE
+CREATE TABLE motorista
+(
+    cnh              NUMERIC(11) NOT NULL,
+    data_contratacao DATE        NOT NULL,
+    nome             VARCHAR(64) NOT NULL,
+    salario          DECIMAL(6)  NOT NULL
 );
 
-ALTER TABLE Inspecoes ADD CONSTRAINT PK_Inspecoes PRIMARY KEY (id_protocolo_seguranca,id_item);
+ALTER TABLE motorista
+    ADD CONSTRAINT pk_motorista PRIMARY KEY (cnh);
 
 
-ALTER TABLE Distancia ADD CONSTRAINT FK_Distancia_0 FOREIGN KEY (id_cidade_partida) REFERENCES Cidade (id_cidade);
-ALTER TABLE Distancia ADD CONSTRAINT FK_Distancia_1 FOREIGN KEY (id_cidade_chegada) REFERENCES Cidade (id_cidade);
+CREATE TABLE pessoafisica
+(
+    id_cliente NUMERIC(10) NOT NULL,
+    cpf        NUMERIC(11),
+    rg         NUMERIC(10)
+);
+
+ALTER TABLE pessoafisica
+    ADD CONSTRAINT pk_pessoafisica PRIMARY KEY (id_cliente);
 
 
-ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_0 FOREIGN KEY (id_cidade_partida) REFERENCES Cidade (id_cidade);
-ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_1 FOREIGN KEY (placa) REFERENCES Caminhao (placa);
-ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_2 FOREIGN KEY (id_cidade_chegada) REFERENCES Cidade (id_cidade);
-ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_3 FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente);
+CREATE TABLE pessoajuridica
+(
+    id_cliente         NUMERIC(10) NOT NULL,
+    cnpj               NUMERIC(10),
+    inscricao_estadual NUMERIC(10)
+);
+
+ALTER TABLE pessoajuridica
+    ADD CONSTRAINT pk_pessoajuridica PRIMARY KEY (id_cliente);
 
 
-ALTER TABLE Licitacao ADD CONSTRAINT FK_Licitacao_0 FOREIGN KEY (id_item) REFERENCES Item (idItem);
+CREATE TABLE protocolo_seguranca
+(
+    id_protocolo_seguranca NUMERIC(10) NOT NULL,
+    descricao              VARCHAR(256)
+);
+
+ALTER TABLE protocolo_seguranca
+    ADD CONSTRAINT pk_protocolo_seguranca PRIMARY KEY (id_protocolo_seguranca);
 
 
-ALTER TABLE PessoaFisica ADD CONSTRAINT FK_PessoaFisica_0 FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente);
+CREATE TABLE remessa
+(
+    id_item         NUMERIC(10) NOT NULL,
+    id_entrega      NUMERIC(10) NOT NULL,
+    valor_declarado DECIMAL(10)
+);
+
+ALTER TABLE remessa
+    ADD CONSTRAINT pk_remessa PRIMARY KEY (id_item, id_entrega);
 
 
-ALTER TABLE PessoaJuridica ADD CONSTRAINT FK_PessoaJuridica_0 FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente);
+CREATE TABLE seguradora
+(
+    numero_seguradora NUMERIC(10) NOT NULL,
+    nome              VARCHAR(64) NOT NULL
+);
+
+ALTER TABLE seguradora
+    ADD CONSTRAINT pk_seguradora PRIMARY KEY (numero_seguradora);
 
 
-ALTER TABLE Remessa ADD CONSTRAINT FK_Remessa_0 FOREIGN KEY (id_item) REFERENCES Item (idItem);
-ALTER TABLE Remessa ADD CONSTRAINT FK_Remessa_1 FOREIGN KEY (id_entrega) REFERENCES Entrega (id_entrega);
+CREATE TABLE telefone
+(
+    ddd        NCHAR(2)    NOT NULL,
+    numero     NUMERIC(9),
+    id_cliente NUMERIC(10) NOT NULL
+);
 
 
-ALTER TABLE Telefone ADD CONSTRAINT FK_Telefone_0 FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente);
+CREATE TABLE apolice
+(
+    id_apolice        NUMERIC(10) NOT NULL,
+    numero_seguradora NUMERIC(10) NOT NULL,
+    id_cliente        NUMERIC(10) NOT NULL,
+    valor_premio      DECIMAL(3),
+    valor_franquia    DECIMAL(3)
+);
+
+ALTER TABLE apolice
+    ADD CONSTRAINT pk_apolice PRIMARY KEY (id_apolice, numero_seguradora, id_cliente);
 
 
-ALTER TABLE Apolice ADD CONSTRAINT FK_Apolice_0 FOREIGN KEY (numero_seguradora) REFERENCES Seguradora (numero_seguradora);
-ALTER TABLE Apolice ADD CONSTRAINT FK_Apolice_1 FOREIGN KEY (id_cliente) REFERENCES PessoaJuridica (id_cliente);
+CREATE TABLE categorizacao
+(
+    iditem       NUMERIC(10) NOT NULL,
+    id_categoria NUMERIC(10) NOT NULL
+);
+
+ALTER TABLE categorizacao
+    ADD CONSTRAINT pk_categorizacao PRIMARY KEY (iditem, id_categoria);
 
 
-ALTER TABLE Categorizacao ADD CONSTRAINT FK_Categorizacao_0 FOREIGN KEY (idItem) REFERENCES Item (idItem);
-ALTER TABLE Categorizacao ADD CONSTRAINT FK_Categorizacao_1 FOREIGN KEY (id_categoria) REFERENCES CategoriaItem (id_categoria);
+CREATE TABLE conducao
+(
+    id_entrega NUMERIC(10) NOT NULL,
+    cnh        NUMERIC(11) NOT NULL
+);
+
+ALTER TABLE conducao
+    ADD CONSTRAINT pk_conducao PRIMARY KEY (id_entrega, cnh);
 
 
-ALTER TABLE Conducao ADD CONSTRAINT FK_Conducao_0 FOREIGN KEY (id_entrega) REFERENCES Entrega (id_entrega);
-ALTER TABLE Conducao ADD CONSTRAINT FK_Conducao_1 FOREIGN KEY (cnh) REFERENCES Motorista (cnh);
+CREATE TABLE inspecoes
+(
+    id_protocolo_seguranca NUMERIC(10) NOT NULL,
+    id_item                NUMERIC(10) NOT NULL,
+    data_ultima_inspecao   DATE
+);
+
+ALTER TABLE inspecoes
+    ADD CONSTRAINT pk_inspecoes PRIMARY KEY (id_protocolo_seguranca, id_item);
 
 
-ALTER TABLE Inspecoes ADD CONSTRAINT FK_Inspecoes_0 FOREIGN KEY (id_protocolo_seguranca) REFERENCES Protocolo_Seguranca (id_protocolo_seguranca);
-ALTER TABLE Inspecoes ADD CONSTRAINT FK_Inspecoes_1 FOREIGN KEY (id_item) REFERENCES Item (idItem);
+ALTER TABLE distancia
+    ADD CONSTRAINT fk_distancia_0 FOREIGN KEY (id_cidade_partida) REFERENCES cidade (id_cidade);
+ALTER TABLE distancia
+    ADD CONSTRAINT fk_distancia_1 FOREIGN KEY (id_cidade_chegada) REFERENCES cidade (id_cidade);
+
+
+ALTER TABLE entrega
+    ADD CONSTRAINT fk_entrega_0 FOREIGN KEY (id_cidade_partida) REFERENCES cidade (id_cidade);
+ALTER TABLE entrega
+    ADD CONSTRAINT fk_entrega_1 FOREIGN KEY (placa) REFERENCES caminhao (placa);
+ALTER TABLE entrega
+    ADD CONSTRAINT fk_entrega_2 FOREIGN KEY (id_cidade_chegada) REFERENCES cidade (id_cidade);
+ALTER TABLE entrega
+    ADD CONSTRAINT fk_entrega_3 FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente);
+
+
+ALTER TABLE licitacao
+    ADD CONSTRAINT fk_licitacao_0 FOREIGN KEY (id_item) REFERENCES item (iditem);
+
+
+ALTER TABLE pessoafisica
+    ADD CONSTRAINT fk_pessoafisica_0 FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente);
+
+
+ALTER TABLE pessoajuridica
+    ADD CONSTRAINT fk_pessoajuridica_0 FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente);
+
+
+ALTER TABLE remessa
+    ADD CONSTRAINT fk_remessa_0 FOREIGN KEY (id_item) REFERENCES item (iditem);
+ALTER TABLE remessa
+    ADD CONSTRAINT fk_remessa_1 FOREIGN KEY (id_entrega) REFERENCES entrega (id_entrega);
+
+
+ALTER TABLE telefone
+    ADD CONSTRAINT fk_telefone_0 FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente);
+
+
+ALTER TABLE apolice
+    ADD CONSTRAINT fk_apolice_0 FOREIGN KEY (numero_seguradora) REFERENCES seguradora (numero_seguradora);
+ALTER TABLE apolice
+    ADD CONSTRAINT fk_apolice_1 FOREIGN KEY (id_cliente) REFERENCES pessoajuridica (id_cliente);
+
+
+ALTER TABLE categorizacao
+    ADD CONSTRAINT fk_categorizacao_0 FOREIGN KEY (iditem) REFERENCES item (iditem);
+ALTER TABLE categorizacao
+    ADD CONSTRAINT fk_categorizacao_1 FOREIGN KEY (id_categoria) REFERENCES categoriaitem (id_categoria);
+
+
+ALTER TABLE conducao
+    ADD CONSTRAINT fk_conducao_0 FOREIGN KEY (id_entrega) REFERENCES entrega (id_entrega);
+ALTER TABLE conducao
+    ADD CONSTRAINT fk_conducao_1 FOREIGN KEY (cnh) REFERENCES motorista (cnh);
+
+
+ALTER TABLE inspecoes
+    ADD CONSTRAINT fk_inspecoes_0 FOREIGN KEY (id_protocolo_seguranca) REFERENCES protocolo_seguranca (id_protocolo_seguranca);
+ALTER TABLE inspecoes
+    ADD CONSTRAINT fk_inspecoes_1 FOREIGN KEY (id_item) REFERENCES item (iditem);
 
 
