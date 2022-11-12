@@ -201,23 +201,23 @@ ALTER TABLE apolices
     ADD CONSTRAINT pk_apolices PRIMARY KEY (id_apolice, numero_seguradora, id_cliente);
 
 
-CREATE TABLE categorizacao
+CREATE TABLE categorizacoes
 (
-    iditem       NUMERIC(10) NOT NULL,
+    id_item       NUMERIC(10) NOT NULL,
     id_categoria NUMERIC(10) NOT NULL
 );
 
-ALTER TABLE categorizacao
-    ADD CONSTRAINT pk_categorizacao PRIMARY KEY (iditem, id_categoria);
+ALTER TABLE categorizacoes
+    ADD CONSTRAINT pk_categorizacao PRIMARY KEY (id_item, id_categoria);
 
 
-CREATE TABLE conducao
+CREATE TABLE conducoes
 (
     id_entrega NUMERIC(10) NOT NULL,
     cnh        NUMERIC(11) NOT NULL
 );
 
-ALTER TABLE conducao
+ALTER TABLE conducoes
     ADD CONSTRAINT pk_conducao PRIMARY KEY (id_entrega, cnh);
 
 
@@ -280,15 +280,15 @@ ALTER TABLE apolices
     ADD CONSTRAINT fk_apolices_1 FOREIGN KEY (id_cliente) REFERENCES pessoas_juridicas (id_cliente);
 
 
-ALTER TABLE categorizacao
-    ADD CONSTRAINT fk_categorizacao_0 FOREIGN KEY (iditem) REFERENCES itens (iditem);
-ALTER TABLE categorizacao
+ALTER TABLE categorizacoes
+    ADD CONSTRAINT fk_categorizacao_0 FOREIGN KEY (id_item) REFERENCES itens (iditem);
+ALTER TABLE categorizacoes
     ADD CONSTRAINT fk_categorizacao_1 FOREIGN KEY (id_categoria) REFERENCES categorias_item (id_categoria);
 
 
-ALTER TABLE conducao
+ALTER TABLE conducoes
     ADD CONSTRAINT fk_conducao_0 FOREIGN KEY (id_entrega) REFERENCES entregas (id_entrega);
-ALTER TABLE conducao
+ALTER TABLE conducoes
     ADD CONSTRAINT fk_conducao_1 FOREIGN KEY (cnh) REFERENCES motoristas (cnh);
 
 
@@ -297,4 +297,4 @@ ALTER TABLE inspecoes
 ALTER TABLE inspecoes
     ADD CONSTRAINT fk_inspecoes_1 FOREIGN KEY (id_item) REFERENCES itens (iditem);
 
-
+COMMIT;
