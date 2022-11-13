@@ -96,7 +96,7 @@ CREATE TABLE itens
 );
 
 ALTER TABLE itens
-    ADD CONSTRAINT pk_itens PRIMARY KEY (iditem);
+    ADD CONSTRAINT pk_itens PRIMARY KEY (id_item);
 
 
 CREATE TABLE licitacoes
@@ -233,13 +233,13 @@ ALTER TABLE inspecoes
 
 
 ALTER TABLE distancias
-    ADD CONSTRAINT fk_distancias_0 FOREIGN KEY (id_cidade_partida) REFERENCES cidades (id_cidade);
+    ADD CONSTRAINT fk_cidade_inicial FOREIGN KEY (id_cidade_partida) REFERENCES cidades (id_cidade);
 ALTER TABLE distancias
-    ADD CONSTRAINT fk_distancias_1 FOREIGN KEY (id_cidade_chegada) REFERENCES cidades (id_cidade);
+    ADD CONSTRAINT fk_cidade_final FOREIGN KEY (id_cidade_chegada) REFERENCES cidades (id_cidade);
 
 
 ALTER TABLE enderecos
-    ADD CONSTRAINT fk_enderecos_0 FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente);
+    ADD CONSTRAINT fk_cliente_proprietario FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente);
 
 
 ALTER TABLE entregas
@@ -253,7 +253,7 @@ ALTER TABLE entregas
 
 
 ALTER TABLE licitacoes
-    ADD CONSTRAINT fk_licitacoes_0 FOREIGN KEY (id_item) REFERENCES itens (iditem);
+    ADD CONSTRAINT fk_licitacoes_0 FOREIGN KEY (id_item) REFERENCES itens (id_item);
 
 
 ALTER TABLE pessoas_fisicas
@@ -265,7 +265,7 @@ ALTER TABLE pessoas_juridicas
 
 
 ALTER TABLE remessas
-    ADD CONSTRAINT fk_remessas_0 FOREIGN KEY (id_item) REFERENCES itens (iditem);
+    ADD CONSTRAINT fk_remessas_0 FOREIGN KEY (id_item) REFERENCES itens (id_item);
 ALTER TABLE remessas
     ADD CONSTRAINT fk_remessas_1 FOREIGN KEY (id_entrega) REFERENCES entregas (id_entrega);
 
@@ -281,7 +281,7 @@ ALTER TABLE apolices
 
 
 ALTER TABLE categorizacoes
-    ADD CONSTRAINT fk_categorizacao_0 FOREIGN KEY (id_item) REFERENCES itens (iditem);
+    ADD CONSTRAINT fk_categorizacao_0 FOREIGN KEY (id_item) REFERENCES itens (id_item);
 ALTER TABLE categorizacoes
     ADD CONSTRAINT fk_categorizacao_1 FOREIGN KEY (id_categoria) REFERENCES categorias_item (id_categoria);
 
@@ -295,6 +295,6 @@ ALTER TABLE conducoes
 ALTER TABLE inspecoes
     ADD CONSTRAINT fk_inspecoes_0 FOREIGN KEY (id_protocolo_seguranca) REFERENCES protocolos_seguranca (id_protocolo_seguranca);
 ALTER TABLE inspecoes
-    ADD CONSTRAINT fk_inspecoes_1 FOREIGN KEY (id_item) REFERENCES itens (iditem);
+    ADD CONSTRAINT fk_inspecoes_1 FOREIGN KEY (id_item) REFERENCES itens (id_item);
 
 COMMIT;
