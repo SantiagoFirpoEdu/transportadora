@@ -22,11 +22,11 @@ INSERT INTO entregas (id_entrega, id_cliente, data_saida, valor) VALUES (7, 3, '
 INSERT INTO entregas (id_entrega, id_cliente, data_saida, valor) VALUES (8, 4, '2017-09-08', 800.00);
 
 --Inserir dados de itens
-INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (1, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
-INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (2, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
-INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (3, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
-INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (4, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
-INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (5, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
+INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (1, 'Caixa de papelão', 1.00, 1.20, 1.20, 10.20);
+INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (2, 'Embaladora automática', 115.00, 4.00, 3.50, 1.40);
+INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (3, 'Aspirador robô', 5.00, 0.40, 0.40, 0.20);
+INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (4, 'Esteira semi-automática', 240.00, 10.00, 1.20, 0.50);
+INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (5, 'Tablet SnapForce 47G', 2.00, 10.00, 10.00, 10.00);
 INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (6, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
 INSERT INTO itens (id_item, descricao, peso, largura, comprimento, altura) VALUES (7, 'Caixa de papelão', 1.00, 10.00, 10.00, 10.00);
 
@@ -35,8 +35,8 @@ INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('123456789'
 INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('987654321', '2021-03-02', 'Maria da Silva', 1800.00);
 INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('142321789', '2017-02-03', 'José Roberto', 1800.00);
 INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('987822834', '2019-01-04', 'Joana Gomes', 1800.00);
-INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('123456789', '2020-12-05', 'João Ferreira', 1800.00);
-INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('987654321', '2019-11-06', 'Maria da Silva', 1800.00);
+INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('123456789', '2020-12-05', 'João Miguel', 1800.00);
+INSERT INTO motoristas(cnh, data_contratacao, nome, salario) VALUES ('987654321', '2019-11-06', 'Maria Andrade', 1800.00);
 
 --Inserir dados de caminhões
 INSERT INTO caminhoes(placa, marca, modelo, ano_fabricacao) VALUES ('ABC-1234', 'Volkswagen', 'Constellation', 2019);
