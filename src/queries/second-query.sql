@@ -1,4 +1,8 @@
---Listar o nome dos clientes, o número, a data de saída, a placa do caminhão e o nome do motorista de suas entregas, bem como a descrição e o nome das categorias dos itens entregues, apenas para as entregas efetuadas no corrente ano, para clientes do Rio Grande do Sul e que tenham valor do prêmio de apólice de seguro pelo menos R$ 100.000,00.
+--Listar o nome dos clientes, o número, a data de saída, a placa do caminhão
+-- e o nome do motorista de suas entregas, bem como a descrição e o nome das
+-- categorias dos itens entregues, apenas para as entregas efetuadas no corrente ano,
+-- para clientes do Rio Grande do Sul e que tenham valor do prêmio de apólice de seguro
+-- pelo menos R$ 100.000,00.
 SELECT
 (
     clientes.nome,
@@ -14,7 +18,7 @@ FROM
     entregas
     LEFT JOIN clientes ON clientes.id_cliente = entregas.id_cliente
     LEFT JOIN apolices ON apolices.id_cliente = clientes.id_cliente
-    LEFT JOIN enderecos ON enderecos.id_cliente = clientes.id_cliente
+    INNER JOIN enderecos ON enderecos.id_cliente = clientes.id_cliente
     LEFT JOIN caminhoes ON entregas.placa = caminhoes.placa
     LEFT JOIN conducoes ON entregas.id_entrega = conducoes.id_entrega
     LEFT JOIN motoristas ON conducoes.cnh = motoristas.cnh
