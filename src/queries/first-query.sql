@@ -1,4 +1,7 @@
---Listar o nome dos clientes, as cidades e a UF de seus endereços, o número, a data de saída e de chegada de suas entregas, apenas para os clientes pessoa física, ordenando o resultado em ordem crescente de nome de cliente e descrescente de data de saída das entregas.
+--Listar o nome dos clientes, as cidades e a UF de seus endereços, o número,
+-- a data de saída e de chegada de suas entregas, apenas para os clientes pessoa física,
+-- ordenando o resultado em ordem crescente de nome de cliente e descrescente de data de saída
+-- das entregas.
 
 SELECT
 (
@@ -18,4 +21,4 @@ FROM
     LEFT JOIN entregas entrega ON entrega.id_cliente = cliente.id_cliente
 )
 
-ORDER BY cliente.nome, entrega.data_saida DESC;
+ORDER BY cliente.nome ASC, entrega.data_saida DESC;
