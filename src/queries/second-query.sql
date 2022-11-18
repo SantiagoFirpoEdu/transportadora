@@ -16,16 +16,16 @@ SELECT
 FROM
 (
     entregas
-    LEFT JOIN clientes ON clientes.id_cliente = entregas.id_cliente
-    LEFT JOIN apolices ON apolices.id_cliente = clientes.id_cliente
+    INNER JOIN clientes ON clientes.id_cliente = entregas.id_cliente
+    INNER JOIN apolices ON apolices.id_cliente = clientes.id_cliente
     INNER JOIN enderecos ON enderecos.id_cliente = clientes.id_cliente
-    LEFT JOIN caminhoes ON entregas.placa = caminhoes.placa
-    LEFT JOIN conducoes ON entregas.id_entrega = conducoes.id_entrega
-    LEFT JOIN motoristas ON conducoes.cnh = motoristas.cnh
-    LEFT JOIN remessas ON entregas.id_entrega = remessas.id_entrega
-    LEFT JOIN itens ON remessas.id_item = itens.id_item
-    LEFT JOIN categorizacoes ON itens.id_item = categorizacoes.id_item
-    LEFT JOIN categorias_item ON categorizacoes.id_categoria = categorias_item.id_categoria
+    INNER JOIN caminhoes ON entregas.placa = caminhoes.placa
+    INNER JOIN conducoes ON entregas.id_entrega = conducoes.id_entrega
+    INNER JOIN motoristas ON conducoes.cnh = motoristas.cnh
+    INNER JOIN remessas ON entregas.id_entrega = remessas.id_entrega
+    INNER JOIN itens ON remessas.id_item = itens.id_item
+    INNER JOIN categorizacoes ON itens.id_item = categorizacoes.id_item
+    INNER JOIN categorias_item ON categorizacoes.id_categoria = categorias_item.id_categoria
 )
 
 WHERE
