@@ -4,21 +4,17 @@
 -- das entregas.
 
 SELECT
-(
     cliente.nome,
     endereco.cidade,
     endereco.unidade_federativa,
     endereco.numero,
     entrega.data_saida,
     entrega.data_chegada
-)
 
 FROM
-(
     pessoas_fisicas
     INNER JOIN clientes cliente ON cliente.id_cliente = pessoas_fisicas.id_cliente
     INNER JOIN enderecos endereco ON endereco.id_cliente = cliente.id_cliente
     INNER JOIN entregas entrega ON entrega.id_cliente = cliente.id_cliente
-)
 
 ORDER BY cliente.nome ASC, entrega.data_saida DESC;

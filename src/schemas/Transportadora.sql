@@ -72,9 +72,9 @@ ALTER TABLE enderecos
 CREATE TABLE entregas
 (
     id_entrega        NUMERIC(10) NOT NULL,
-    valor             INT,
+    valor             FLOAT(3) NOT NULL,
     data_chegada      DATE,
-    data_partida      DATE,
+    data_saida        DATE,
     id_cidade_partida NUMERIC(10),
     placa             NUMERIC(7),
     id_cidade_chegada NUMERIC(10),
@@ -87,7 +87,7 @@ ALTER TABLE entregas
 
 CREATE TABLE itens
 (
-    iditem      NUMERIC(10) NOT NULL,
+    id_item      NUMERIC(10) NOT NULL,
     descricao   VARCHAR(64) NOT NULL,
     peso        DECIMAL(3)  NOT NULL,
     largura     DECIMAL(3)  NOT NULL,
@@ -137,8 +137,8 @@ ALTER TABLE pessoas_fisicas
 CREATE TABLE pessoas_juridicas
 (
     id_cliente         NUMERIC(10) NOT NULL,
-    cnpj               NUMERIC(10),
-    inscricao_estadual NUMERIC(10)
+    cnpj               NUMERIC(11) NOT NULL,
+    inscricao_estadual NUMERIC(10) NOT NULL
 );
 
 ALTER TABLE pessoas_juridicas
@@ -148,7 +148,7 @@ ALTER TABLE pessoas_juridicas
 CREATE TABLE protocolos_seguranca
 (
     id_protocolo_seguranca NUMERIC(10) NOT NULL,
-    descricao              VARCHAR(256)
+    descricao              VARCHAR(256) NOT NULL
 );
 
 ALTER TABLE protocolos_seguranca
@@ -193,8 +193,8 @@ CREATE TABLE apolices
     id_apolice        NUMERIC(10) NOT NULL,
     numero_seguradora NUMERIC(10) NOT NULL,
     id_cliente        NUMERIC(10) NOT NULL,
-    valor_premio      DECIMAL(3),
-    valor_franquia    DECIMAL(3)
+    valor_premio      DECIMAL(3) NOT NULL,
+    valor_franquia    DECIMAL(3) NOT NULL
 );
 
 ALTER TABLE apolices
@@ -261,7 +261,7 @@ ALTER TABLE pessoas_fisicas
 
 
 ALTER TABLE pessoas_juridicas
-    ADD CONSTRAINT fk_pessoas_fisicas_cliente FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente);
+    ADD CONSTRAINT fk_pessoas_juridicas_cliente FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente);
 
 
 ALTER TABLE remessas
@@ -293,7 +293,7 @@ ALTER TABLE conducoes
 
 
 ALTER TABLE inspecoes
-    ADD CONSTRAINT fk_inspecoes_protocolo_seguranca FOREIGN KEY (id_protocolo_seguranca) REFERENCES protocolos_seguranca (id_protocolo_seguranca);
+    ADD CONSTRAINT fk_inspecoes_protocolo FOREIGN KEY (id_protocolo_seguranca) REFERENCES protocolos_seguranca (id_protocolo_seguranca);
 ALTER TABLE inspecoes
     ADD CONSTRAINT fk_inspecoes_item FOREIGN KEY (id_item) REFERENCES itens (id_item);
 

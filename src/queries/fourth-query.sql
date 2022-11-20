@@ -19,6 +19,4 @@ FROM
     INNER JOIN enderecos endereco ON cliente.id_cliente = endereco.id_cliente
     INNER JOIN licitacoes licitacao ON item.id_item = licitacao.id_item
 WHERE
-(
-    endereco.cidade = 'Porto Alegre'
-)
+    endereco.cidade = 'Porto Alegre';
