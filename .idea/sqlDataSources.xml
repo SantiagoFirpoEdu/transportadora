@@ -2,12 +2,28 @@
 <project version="4">
   <component name="DdlMappings">
     <mapping uuid="514e6c53-5f24-4e68-b6ea-e927a29d637c" name="pucrs-remoto Mapping">
-      <data-sources db="ea31fb5e-a0bb-4cc0-a0dd-53b9bb9eab30" ddl="d9a36908-936e-4bd0-8579-95e7249bc817" />
+      <data-sources db="ea31fb5e-a0bb-4cc0-a0dd-53b9bb9eab30" ddl="12fdd505-d385-491c-990c-3e7dacba153e" />
       <scope>
         <node kind="database" qname="@">
           <node kind="schema" qname="@" />
         </node>
       </scope>
     </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="12fdd505-d385-491c-990c-3e7dacba153e" />
+          <option name="name" value="pucrs-remoto (DDL)" />
+          <option name="languageId" value="Oracle" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
   </component>
 </project>
