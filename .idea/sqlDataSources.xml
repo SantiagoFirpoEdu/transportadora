@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="514e6c53-5f24-4e68-b6ea-e927a29d637c" name="pucrs-remoto Mapping">
+      <data-sources db="ea31fb5e-a0bb-4cc0-a0dd-53b9bb9eab30" ddl="d9a36908-936e-4bd0-8579-95e7249bc817" />
+      <scope>
+        <node kind="database" qname="@">
+          <node kind="schema" qname="@" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+</project>

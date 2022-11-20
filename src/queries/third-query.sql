@@ -1,19 +1,17 @@
 --Listar o nome de todos os clientes pessoa jurídica, acompanhados da
 -- quantidade de entregas solicitadas e do valor total de suas apólices de seguro, apenas para
 -- clientes do Rio Grande do Sul que tenham solicitado pelo menos 5 entregas.
-SELECT
-    CC105613.clientes.nome,
-    COUNT(entrega.id_entrega) AS quantidade_entregas,
-    SUM(apolice.valor_premio) AS valor_total_apolices
+SELECT CLIENTE.NOME,
+       COUNT(DISTINCT ENTREGA.ID_ENTREGA) AS QUANTIDADE_ENTREGAS,
+       SUM(APOLICE.VALOR_PREMIO) AS VALOR_TOTAL_APOLICES
 
-FROM
-    CC105613.clientes
-    INNER JOIN CC105613.pessoas_juridicas pessoa_juridica ON clientes.id_cliente = pessoa_juridica.id_cliente
-    LEFT JOIN CC105613.enderecos endereco ON clientes.id_cliente = endereco.id_cliente
-    LEFT JOIN CC105613.entregas entrega ON entrega.id_cliente = clientes.id_cliente
-    LEFT JOIN CC105613.apolices apolice ON apolice.id_cliente = clientes.id_cliente
+FROM CC105613.PESSOAS_JURIDICAS PESSOA_JURIDICA
+         INNER JOIN CC105613.CLIENTES CLIENTE ON CLIENTE.ID_CLIENTE = PESSOA_JURIDICA.ID_CLIENTE
+         INNER JOIN CC105613.APOLICES APOLICE ON APOLICE.ID_CLIENTE = PESSOA_JURIDICA.ID_CLIENTE
+         INNER JOIN CC105613.ENDERECOS ENDERECO ON PESSOA_JURIDICA.ID_CLIENTE = ENDERECO.ID_CLIENTE
+         INNER JOIN CC105613.ENTREGAS ENTREGA ON ENTREGA.ID_CLIENTE = PESSOA_JURIDICA.ID_CLIENTE
 
-WHERE endereco.unidade_federativa = 'RS'
-GROUP BY clientes.nome
-HAVING COUNT(entrega.id_entrega) >= 5
-ORDER BY clientes.nome;
+WHERE ENDERECO.UNIDADE_FEDERATIVA = 'RS'
+GROUP BY CLIENTE.NOME
+HAVING COUNT(DISTINCT ENTREGA.ID_ENTREGA) >= 5
+ORDER BY CLIENTE.NOME;

@@ -3,18 +3,16 @@
 -- ordenando o resultado em ordem crescente de nome de cliente e descrescente de data de saída
 -- das entregas.
 
-SELECT
-    cliente.nome,
-    endereco.cidade,
-    endereco.unidade_federativa,
-    endereco.numero,
-    entrega.data_saida,
-    entrega.data_chegada
+SELECT CLIENTE.NOME,
+       ENDERECO.CIDADE,
+       ENDERECO.UNIDADE_FEDERATIVA,
+       ENDERECO.NUMERO,
+       ENTREGA.DATA_SAIDA,
+       ENTREGA.DATA_CHEGADA
 
-FROM
-    CC105613.pessoas_fisicas
-    INNER JOIN CC105613.clientes cliente ON cliente.id_cliente = CC105613.pessoas_fisicas.id_cliente
-    INNER JOIN CC105613.enderecos endereco ON endereco.id_cliente = cliente.id_cliente
-    INNER JOIN CC105613.entregas entrega ON entrega.id_cliente = cliente.id_cliente
+FROM CC105613.PESSOAS_FISICAS
+         INNER JOIN CC105613.CLIENTES CLIENTE ON CLIENTE.ID_CLIENTE = CC105613.PESSOAS_FISICAS.ID_CLIENTE
+         INNER JOIN CC105613.ENDERECOS ENDERECO ON ENDERECO.ID_CLIENTE = CLIENTE.ID_CLIENTE
+         INNER JOIN CC105613.ENTREGAS ENTREGA ON ENTREGA.ID_CLIENTE = CLIENTE.ID_CLIENTE
 
-ORDER BY cliente.nome, entrega.data_saida DESC;
+ORDER BY CLIENTE.NOME, ENTREGA.DATA_SAIDA DESC;
