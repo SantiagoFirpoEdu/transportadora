@@ -1,7 +1,7 @@
 --Listar o nome de todos os clientes pessoa jurídica, acompanhados da
 -- quantidade de entregas solicitadas e do valor total de suas apólices de seguro, apenas para
 -- clientes do Rio Grande do Sul que tenham solicitado pelo menos 5 entregas.
-SELECT DISTINCT
+SELECT
     CLIENTE.NOME,
     COUNT(ENTREGA.ID_ENTREGA) AS QTD_ENTREGAS,
     CLIENTES_APOLICES_VALOR_TOTAL.VALOR_TOTAL_APOLICES
