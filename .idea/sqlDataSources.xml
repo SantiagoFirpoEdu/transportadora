@@ -10,20 +10,4 @@
       </scope>
     </mapping>
   </component>
-  <component name="SqlDataSourceStorage">
-    <option name="dataSources">
-      <list>
-        <State>
-          <option name="id" value="12fdd505-d385-491c-990c-3e7dacba153e" />
-          <option name="name" value="pucrs-remoto (DDL)" />
-          <option name="languageId" value="Oracle" />
-          <option name="urls">
-            <array>
-              <option value="file://$PROJECT_DIR$" />
-            </array>
-          </option>
-        </State>
-      </list>
-    </option>
-  </component>
 </project>
